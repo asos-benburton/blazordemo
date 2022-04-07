@@ -3,14 +3,14 @@ WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine AS build
 WORKDIR /src
-COPY ["./src/DemoApi/DemoApi.csproj", "src/"]
+COPY ["./BlazorDemo/DemoApi/DemoApi.csproj", "src/"]
 RUN dotnet restore "src/DemoApi.csproj"
 COPY . .
 WORKDIR "/src/"
-RUN dotnet build "src/DemoApi/DemoApi.csproj" -c Release -o /app/build
+RUN dotnet build "BlazorDemo/DemoApi/DemoApi.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "src/DemoApi/DemoApi.csproj" -c Release -o /app/publish
+RUN dotnet publish "BlazorDemo/DemoApi/DemoApi.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app

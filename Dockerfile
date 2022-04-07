@@ -3,7 +3,7 @@ WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine AS build
 WORKDIR /src
-COPY ["./DemoApi/DemoApi.csproj", "src/"]
+COPY ["./src/DemoApi/DemoApi.csproj", "src/"]
 RUN dotnet restore "src/DemoApi.csproj"
 COPY . .
 WORKDIR "/src/"

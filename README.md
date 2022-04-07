@@ -6,5 +6,5 @@ cd ./BlazorDemo; curl -ssl https://dot.net/v1/dotnet-install.sh > dotnet-install
 ```
 Build output directory 
 ```
-/BlazorDemo/output/wwwroot
+BlazorDemo/output/wwwroot
 ```

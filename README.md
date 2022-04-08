@@ -8,3 +8,21 @@ Build output directory
 ```
 BlazorDemo/output/wwwroot
 ```
+Cors policy
+```
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "corsPolicy",
+        configurePolicy =>
+        {
+            configurePolicy
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .WithHeaders(HeaderNames.ContentType);
+        });
+});
+```
+```
+app.UseAuthorization();
+app.UseCors("corsPolicy");
+```

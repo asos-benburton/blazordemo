@@ -1,8 +1,22 @@
+using Microsoft.Net.Http.Headers;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "corsPolicy",
+        configurePolicy =>
+        {
+            configurePolicy
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .WithHeaders(HeaderNames.ContentType);
+        });
+});
 
 var app = builder.Build();
 
@@ -11,6 +25,7 @@ var app = builder.Build();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+app.UseCors("corsPolicy");
 
 app.MapControllers();
 
